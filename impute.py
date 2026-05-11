@@ -11,7 +11,6 @@ def group_impute(df, col, group_col, method='median'):
             fill = group[col].median()
         else:
             fill = group[col].mean()
-        # fallback to global if entire group is null
         if pd.isna(fill):
             fill = df[col].median() if method == 'median' else df[col].mean()
         return group[col].fillna(fill)
